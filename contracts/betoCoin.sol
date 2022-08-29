@@ -58,7 +58,7 @@ contract BetoCoin is IERC20 {
     function transferFrom(address owner, address buyer, uint256 numCoins) public override returns (bool) {
         require(numCoins <= balances[owner]);
         require(numCoins <= allowed[owner][msg.sender]);
-        
+
         balances[owner] = balances[owner] - numCoins;
         allowed[owner][msg.sender] = allowed[owner][msg.sender] - numCoins;
         balances[buyer] = balances[buyer] + numCoins;
